@@ -1,4 +1,3 @@
-import {EMPTY_STRING} from "$lib/constants/string";
 import {MODIFICATION_DECISION_SECOND} from "$lib/constants/number";
 import {LOCALE} from "$lib/constants/locale";
 

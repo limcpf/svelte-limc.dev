@@ -1,0 +1,1 @@
+export const MODIFICATION_DECISION_SECOND = 60

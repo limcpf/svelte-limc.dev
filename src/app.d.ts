@@ -7,6 +7,15 @@ declare global {
 		// interface PageData {}
 		// interface Platform {}
 	}
+	type Menu = {
+		text: string;
+		href: string;
+		startWith: boolean;
+	}
+	type ListFooterProp = {
+		text: string;
+		href?: string;
+	}
 }
 
 export {};

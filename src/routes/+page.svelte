@@ -1,9 +1,5 @@
-<script lang="ts">
-    import type PostDto from "$lib/domain/Post/Post.dto";
-    import PostTitle from "../components/post/PostTitle.svelte";
-
-    /** @type {import('./$types').PageData} */
-	export let data: PostDto;
+<script>
 </script>
 
-<PostTitle post={data} />
+
+TODO : 최신글 화면 + 불러오는 기능

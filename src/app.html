@@ -1,12 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;700&display=swap" rel="stylesheet">
 		<meta name="viewport" content="width=device-width" />
+		<title>메인 | 싱싱한 코딩</title>
 		%sveltekit.head%
+		<style>
+			* {
+				font-family: 'Noto Sans KR', sans-serif;
+			}
+			body {
+				margin: 0;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			a:link { color: black; text-decoration: none;}
+			a:visited { color: black; text-decoration: none;}
+			a:hover { color: black; text-decoration: underline;}
+			a.href-icon::after {
+				content: url("/href.svg");
+				margin-left: 3px;
+				color: lightgray;
+			}
+
+			.markdown-body {
+				width: 100%;
+				box-sizing: border-box;
+				min-width: 200px;
+				max-width: 1024px;
+				margin: 0 auto;
+				padding: 15px;
+				word-break: break-all;
+			}
+			.markdown-body ul, .markdown-body ol {
+				line-height: 1.5em;
+			}
+			.markdown-body img {
+				width: 100%;
+			}
+			input[type='number']::-webkit-outer-spin-button,
+			input[type='number']::-webkit-inner-spin-button {
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+			}
+
+			input[type='number'] {
+				-moz-appearance: textfield;
+			}
+			/* Select box 스타일 초기화 */
+			select {
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+			}
+
+			/* IE 에서 Select box 화살표 제거 */
+			select::-ms-expand { display: none; }
+			/* input 기본 스타일 초기화 */
+			input {
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+			}
+
+			/* IE10 이상에서 input box 에 추가된 지우기 버튼 제거 */
+			input::-ms-clear { display: none; }
+
+			/* input type number 에서 화살표 제거 */
+			input[type='number']::-webkit-inner-spin-button,
+			input[type='number']::-webkit-outer-spin-button {
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+			}
+
+		</style>
 	</head>
 	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
+	<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>

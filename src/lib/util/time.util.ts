@@ -14,13 +14,12 @@ export function getVisibleDateTime(createdAt:string, updatedAt:string):string {
         standardDate = updateDate
     }
 
-    const diffTimeFromNow = (new Date().getTime()) - standardDate
+    const diffTimeFromNow = (new Date().getTime() / 1000) - standardDate;
 
-    if(diffTimeFromNow < 600) return `${diffTimeFromNow / 60}분 전`;
-    else if(diffTimeFromNow < 3600) return `${diffTimeFromNow / 600}분 전`
-    else if(diffTimeFromNow < 43200) return `${diffTimeFromNow / 3600}시간 전`
+    if(diffTimeFromNow < 3600) return `${Math.floor(diffTimeFromNow / 60)}분 전`;
+    else if(diffTimeFromNow < 43200) return `${Math.floor(diffTimeFromNow / 3600)}시간 전`
 
-    return new Intl.DateTimeFormat(LOCALE).format(
+    return new Intl.DateTimeFormat(LOCALE, {dateStyle: "short", timeStyle: "short"}).format(
         isUpdated ? uDate : cDate
     );
 }

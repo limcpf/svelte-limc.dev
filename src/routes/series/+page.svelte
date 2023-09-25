@@ -5,8 +5,7 @@
 
     async function loadSeries(page: number) {
         const req = await fetch(`http://localhost:8080/public/series/site/DEV?page=${page}`)
-        const json = await req.json() as Page<SeriesListDto>
-        return json
+        return await req.json() as Page<SeriesListDto>
     }
 </script>
 

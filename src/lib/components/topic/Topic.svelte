@@ -57,13 +57,11 @@
 
     async function loadPostByTopic(page: number) {
         const req = await fetch(`http://localhost:8080/public/post/topic/${id}?page=${page}`)
-        const json = await req.json() as Page<PostDto>
-        return json
+        return await req.json() as Page<PostDto>
     }
     async function loadSeriesByTopic(page: number) {
         const req = await fetch(`http://localhost:8080/public/series/topic/${id}?page=${page}`)
-        const json = await req.json() as Page<SeriesListDto>
-        return json
+        return await req.json() as Page<SeriesListDto>
     }
 </script>
 

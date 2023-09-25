@@ -5,8 +5,7 @@
 
     async function loadPost(page: number) {
         const req = await fetch(`http://localhost:8080/public/post/site/DEV?page=${page}`)
-        const json = await req.json() as Page<PostDto>
-        return json
+        return await req.json() as Page<PostDto>
     }
 </script>
 

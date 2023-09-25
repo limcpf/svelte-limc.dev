@@ -17,7 +17,7 @@ const content = `## 소개\n안녕하세요. 싱싱한코딩 블로그를 운영
 
 <style>
     div {
-        margin: 0em 1em;
+        margin: 0 1em;
     }
 </style>
 

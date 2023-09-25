@@ -53,8 +53,7 @@
 
     async function loadPostBySeries(page: number) {
         const req = await fetch(`http://localhost:8080/public/post/series/${id}?page=${page}`)
-        const json = await req.json() as Page<PostDto>
-        return json
+        return await req.json() as Page<PostDto>
     }
 </script>
 
@@ -90,28 +89,6 @@
         width: 100%;
         margin-top: 2rem;
         max-width: 1024px;
-    }
-    .btn-bar {
-        width: 100%;
-        border-bottom: 1px solid lightgray;
-        display: flex;
-    }
-    .btn:hover {
-        cursor: pointer;
-        text-decoration: underline;
-        background-color: rgba(0,0,0,0.03);
-        transition: 0.2s ease-in-out;
-    }
-    .btn {
-        padding: 0.8rem 2rem;
-        color: rgb(128, 128, 128);
-        font-size: 0.8em;
-    }
-    .btn[aria-current="true"] {
-        color: black;
-        font-weight: bold;
-        text-decoration: underline;
-        background-color: rgba(0,0,0,0.08);
     }
 
     @media (min-width: 640px) {

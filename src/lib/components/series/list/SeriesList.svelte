@@ -4,7 +4,6 @@
     import PageBar from "$lib/components/common/PageBar.svelte";
     import type SeriesListDto from "$lib/domain/Series/SeriesList.dto";
     import SeriesListBlock from "$lib/components/series/list/SeriesListBlock.svelte";
-    import PostDto from "$lib/domain/Post/Post.dto";
 
     export let loadFunction: (page: number) => Page<SeriesListDto>;
     let seriesList: Page<SeriesListDto> | undefined;

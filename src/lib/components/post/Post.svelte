@@ -19,6 +19,7 @@
         series,
         seriesName,
         content,
+        summary,
         createdAt,
         updatedAt
     } = data
@@ -59,6 +60,7 @@
     }
 
 </script>
+
 
 <div class="post-wrapper">
     <h1>{title}</h1>

@@ -4,8 +4,10 @@
     import PageBar from "$lib/components/common/PageBar.svelte";
     import type SeriesListDto from "$lib/domain/Series/SeriesList.dto";
     import SeriesListBlock from "$lib/components/series/list/SeriesListBlock.svelte";
+    import NoContents from "$lib/components/common/NoContents.svelte";
 
-    export let loadFunction: (page: number) => Page<SeriesListDto>;
+    export let loadFunction: (page: number) => Promise<Page<SeriesListDto>>;
+
     let seriesList: Page<SeriesListDto> | undefined;
 
     let page = 1;
@@ -18,13 +20,15 @@
 </script>
 
 {#if seriesList}
-    <div class="list-wrapper">
-        <ListHeader title="시리즈 목록" page={seriesList} />
-        {#each seriesList.content as series}
-            <SeriesListBlock seriesDto={series} />
-        {/each}
-        <PageBar tPage={seriesList} bind:page={page}/>
-    </div>
-{:else}
-    ...load
+    {#if seriesList.content.length > 0}
+        <div class="list-wrapper">
+            <ListHeader title="시리즈 목록" page={seriesList} />
+            {#each seriesList.content as series}
+                <SeriesListBlock seriesDto={series} />
+            {/each}
+            <PageBar tPage={seriesList} bind:page={page}/>
+        </div>
+    {:else}
+        <NoContents />
+    {/if}
 {/if}

@@ -4,6 +4,7 @@
     import ListHeader from "$lib/components/common/ListHeader.svelte";
     import TopicListBlock from "$lib/components/topic/list/TopicListBlock.svelte";
     import PageBar from "$lib/components/common/PageBar.svelte";
+    import NoContents from "$lib/components/common/NoContents.svelte";
 
     let topics: Page<TopicDto> | undefined;
 
@@ -18,13 +19,17 @@
 </script>
 
 {#if topics}
-    <div class="list-wrapper">
-        <ListHeader title="주제 목록" page={topics} />
-        {#each topics.content as topic}
-            <TopicListBlock topicDto={topic} />
-        {/each}
-        <PageBar tPage={topics} bind:page={page}/>
-    </div>
+    {#if topics.content.length > 0}
+        <div class="list-wrapper">
+            <ListHeader title="주제 목록" page={topics} />
+            {#each topics.content as topic}
+                <TopicListBlock topicDto={topic} />
+            {/each}
+            <PageBar tPage={topics} bind:page={page}/>
+        </div>
+    {:else}
+        <NoContents />
+    {/if}
 {/if}
 
 <style>

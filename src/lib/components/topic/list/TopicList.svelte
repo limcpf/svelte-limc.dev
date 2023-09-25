@@ -18,25 +18,14 @@
 </script>
 
 {#if topics}
-    <div class="topic-list">
+    <div class="list-wrapper">
         <ListHeader title="주제 목록" page={topics} />
         {#each topics.content as topic}
             <TopicListBlock topicDto={topic} />
         {/each}
         <PageBar tPage={topics} bind:page={page}/>
     </div>
-{:else}
-    ...load
 {/if}
 
 <style>
-    .topic-list {
-        width: 100%;
-        max-width: 1400px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
-    }
 </style>

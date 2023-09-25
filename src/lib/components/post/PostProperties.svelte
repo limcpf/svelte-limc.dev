@@ -23,7 +23,7 @@
     let timeIcon = TimeIcon;
 </script>
 
-<div class="post-properties">
+<div class="properties">
     <div class="properties-title">
         <span>글 정보</span>
         <div on:click={() => {showProperties = !showProperties}} class="properties-toggle-btn">
@@ -79,7 +79,7 @@
 </div>
 
 <style>
-    .post-properties {
+    .properties {
         width: 100%;
         max-width: 640px;
     }
@@ -139,7 +139,7 @@
     }
 
     @media (min-width: 640px) {
-        .post-properties {
+        .properties {
             max-width: 1024px;
         }
         .properties-key {

@@ -1,7 +1,7 @@
 <script>
     import {marked} from "marked";
     import prism from "prismjs";
-    import "prismjs/themes/prism-twilight.min.css";
+    import "prismjs/themes/prism-twilight.css";
     import "prismjs/components/prism-shell-session";
     import "prismjs/components/prism-kotlin";
     import "prismjs/components/prism-java";

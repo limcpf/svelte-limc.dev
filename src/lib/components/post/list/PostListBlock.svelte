@@ -68,7 +68,6 @@
         color: rgb(128, 128, 128);
         font-size: 0.8rem;
         font-weight: lighter;
-        padding-left: 0.5rem;
     }
 
     .post-list-left {
@@ -89,7 +88,6 @@
     }
     @media (min-width: 640px) {
         .post-list-block {
-            width: 70%;
             padding: 0.5em 1em;
         }
         .post-list-right {

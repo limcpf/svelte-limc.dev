@@ -20,7 +20,7 @@
         justify-content: space-between;
         border-bottom: 1px solid lightgray;
         padding: 1em 0 .1em 0;
-        margin-bottom: 1em;
+        margin: 1em 0;
     }
 
     .header-title {
@@ -37,7 +37,6 @@
     @media (min-width: 640px) {
         .post-list-header {
             padding: 0 0 .5em 0;
-            width: 80%;
         }
     }
 </style>

@@ -13,7 +13,7 @@
 
     if(createdAt && updatedAt) footer.push({text: "created at " + getVisibleDateTime(createdAt, updatedAt)});
 
-    const href = `/topic/${id}`;
+    const href = `/series/${id}`;
 </script>
 <div class="series-list-block">
     <div class="series-list-title">
@@ -52,8 +52,9 @@
 
     @media (min-width: 640px) {
         .series-list-block {
-            width: 75%;
-            padding: 0.5em 1em;
+            width: 100%;
+            padding: 0.5em 0 .5em 2em;
+            box-sizing: border-box;
         }
         .series-list-title > h3{
             font-size: 1.3rem;

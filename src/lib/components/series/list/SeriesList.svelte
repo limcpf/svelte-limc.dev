@@ -4,23 +4,22 @@
     import PageBar from "$lib/components/common/PageBar.svelte";
     import type SeriesListDto from "$lib/domain/Series/SeriesList.dto";
     import SeriesListBlock from "$lib/components/series/list/SeriesListBlock.svelte";
+    import PostDto from "$lib/domain/Post/Post.dto";
 
+    export let loadFunction: (page: number) => Page<SeriesListDto>;
     let seriesList: Page<SeriesListDto> | undefined;
 
     let page = 1;
-    $: loadSeries(page);
+    $: load(page);
 
-    async function loadSeries(page: number) {
-        seriesList = undefined;
-        const req = await fetch(`http://localhost:8080/public/series/site/DEV?page=${page}`)
-        const json = await req.json() as Page<SeriesListDto>
 
-        seriesList = json;
+    async function load(page:number) {
+        seriesList = await loadFunction(page);
     }
 </script>
 
 {#if seriesList}
-    <div class="series-list">
+    <div class="list-wrapper">
         <ListHeader title="시리즈 목록" page={seriesList} />
         {#each seriesList.content as series}
             <SeriesListBlock seriesDto={series} />
@@ -30,15 +29,3 @@
 {:else}
     ...load
 {/if}
-
-<style>
-    .series-list {
-        width: 100%;
-        max-width: 1400px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
-    }
-</style>

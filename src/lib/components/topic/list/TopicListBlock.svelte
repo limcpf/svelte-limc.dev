@@ -50,8 +50,9 @@
 
     @media (min-width: 640px) {
         .topic-list-block {
-            width: 75%;
-            padding: 0.5em 1em;
+            width: 100%;
+            padding: 0.5em 0 .5em 2em;
+            box-sizing: border-box;
         }
         .topic-list-title > h3{
             font-size: 1.3rem;

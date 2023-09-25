@@ -23,3 +23,8 @@ export function getVisibleDateTime(createdAt:string, updatedAt:string):string {
         isUpdated ? uDate : cDate
     );
 }
+
+export const getFormatDate = (date: string | undefined) => {
+    if(!date) return "";
+    return new Intl.DateTimeFormat("ko-KR", { dateStyle: 'long', timeStyle: 'medium' }).format(new Date(date));
+};

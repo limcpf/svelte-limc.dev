@@ -22,7 +22,7 @@
          },
          {
           text: "소개",
-          href: "/me",
+          href: "/intro",
           startWith: false
          }
  ]
@@ -32,7 +32,7 @@
 
 <nav class="menu-wrapper">
     <div class="menu">
-        <a href="/" class="blog-title">싱코</a>
+        <a href="/" class="blog-title before-title">싱 코</a>
         <div class="menu-bar">
             {#each menus as item, idx}
                 <MenuBtn menu={item}/>
@@ -68,8 +68,12 @@
         border-right: 1px solid lightgray;
         font-size: 1.3rem;
         font-weight: bold;
-        letter-spacing: 0.3em;
+        text-align: center;
     }
+    .blog-title::before {
+        content: "싱싱한:코딩";
+    }
+
     main.blog-wrapper {
         width: 100%;
         box-sizing: border-box;

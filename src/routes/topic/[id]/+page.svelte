@@ -1,7 +1,6 @@
 <script lang="ts">
     import Topic from "$lib/components/topic/Topic.svelte";
     import type TopicDetailDto from "$lib/domain/Topic/TopicDetail.dto";
-    import Series from "$lib/components/series/Series.svelte";
 
     /** @type {import('./$types').PageData} */
     export let data: TopicDetailDto;

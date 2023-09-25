@@ -2,7 +2,6 @@
     import PostList from "$lib/components/post/list/PostList.svelte";
     import Page from "$lib/domain/Page.js";
     import PostDto from "$lib/domain/Post/Post.dto.js";
-    import Post from "$lib/components/post/Post.svelte";
 
     const pageTitle = "글 목록 | 싱싱한코딩"
 

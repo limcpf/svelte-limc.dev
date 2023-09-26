@@ -8,12 +8,14 @@
 
         export let loadFunction: (page: number) => Promise<Page<PostDto>>;
     let posts: Page<PostDto> | undefined;
+    $: posts = posts
 
     let page = 1;
     $: load(page);
 
     async function load(page:number) {
-       posts = await loadFunction(page);
+        posts = undefined
+        posts = await loadFunction(page);
     }
 </script>
 

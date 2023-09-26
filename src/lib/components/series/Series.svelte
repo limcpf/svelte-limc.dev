@@ -52,7 +52,7 @@
     ]
 
     async function loadPostBySeries(page: number) {
-        const req = await fetch(`http://localhost:8080/public/post/series/${id}?page=${page}`)
+        const req = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/public/post/series/${id}?page=${page}`)
         return await req.json() as Page<PostDto>
     }
 </script>

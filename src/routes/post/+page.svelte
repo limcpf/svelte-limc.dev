@@ -6,7 +6,7 @@
     const pageTitle = "글 목록 | 싱싱한코딩"
 
     async function loadPost(page: number) {
-        const req = await fetch(`http://localhost:8080/public/post/site/DEV?page=${page}`)
+        const req = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/public/post/site/DEV?page=${page}`)
         return await req.json() as Page<PostDto>
     }
 </script>

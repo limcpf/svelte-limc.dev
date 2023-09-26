@@ -56,11 +56,11 @@
     ]
 
     async function loadPostByTopic(page: number) {
-        const req = await fetch(`http://localhost:8080/public/post/topic/${id}?page=${page}`)
+        const req = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/public/post/topic/${id}?page=${page}`)
         return await req.json() as Page<PostDto>
     }
     async function loadSeriesByTopic(page: number) {
-        const req = await fetch(`http://localhost:8080/public/series/topic/${id}?page=${page}`)
+        const req = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/public/series/topic/${id}?page=${page}`)
         return await req.json() as Page<SeriesListDto>
     }
 </script>

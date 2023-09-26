@@ -13,7 +13,7 @@
 
     async function loadTopic(page: number) {
         topics = undefined;
-        const req = await fetch(`http://localhost:8080/public/topic/site/DEV?page=${page}`)
+        const req = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/public/topic/site/DEV?page=${page}`)
         topics = await req.json() as Page<TopicDto>;
     }
 </script>

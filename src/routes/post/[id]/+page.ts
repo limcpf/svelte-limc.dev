@@ -5,7 +5,7 @@ import type {PageLoad} from "../../../../.svelte-kit/types/src/routes/post/[id]/
 /** @type {import('./$types').PageLoad} */
 export const load:PageLoad = async ({ params }) => {
     if(params?.id) {
-        const req = await fetch(`http://localhost:8080/public/post/${params.id}`)
+        const req = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/public/post/${params.id}`)
         const json = await req.json()
         return json as PostDto
     } else {

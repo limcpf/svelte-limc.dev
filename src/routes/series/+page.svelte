@@ -6,7 +6,7 @@
     const pageTitle = "시리즈 목록 | 싱싱한코딩";
 
     async function loadSeries(page: number) {
-        const req = await fetch(`http://localhost:8080/public/series/site/DEV?page=${page}`)
+        const req = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/public/series/site/DEV?page=${page}`)
         return await req.json() as Page<SeriesListDto>
     }
 </script>

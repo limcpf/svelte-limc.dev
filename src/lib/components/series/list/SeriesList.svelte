@@ -15,6 +15,7 @@
 
 
     async function load(page:number) {
+        seriesList = undefined;
         seriesList = await loadFunction(page);
     }
 </script>

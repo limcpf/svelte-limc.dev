@@ -5,7 +5,7 @@ import type SeriesDetailDto from "$lib/domain/Series/SeriesDetail.dto";
 /** @type {import('./$types').PageLoad} */
 export const load:PageLoad = async ({ params }) => {
     if(params?.id) {
-        const req = await fetch(`http://localhost:8080/public/series/${params.id}`)
+        const req = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/public/series/${params.id}`)
         const json = await req.json()
         return json as SeriesDetailDto;
     } else {

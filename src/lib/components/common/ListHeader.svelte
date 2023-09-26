@@ -4,8 +4,12 @@
     export let title: string;
     export let page: Page<T>;
 
-    const total = page.totalPages;
-    const curPage = page.pageable.pageNumber + 1;
+    let total;
+    let curPage;
+    if(page) {
+        total = page.totalPages;
+        curPage = page.pageable.pageNumber + 1;
+    }
 </script>
 
 <div class="post-list-header">

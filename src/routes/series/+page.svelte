@@ -3,7 +3,7 @@
     import Page from "$lib/domain/Page.js";
     import SeriesListDto from "$lib/domain/Series/SeriesList.dto.js";
 
-    const pageTitle = "시리즈 목록 | 싱싱한코딩";
+    const pageTitle = "시리즈 목록 | 싱싱한 코딩";
 
     async function loadSeries(page: number) {
         const req = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/public/series/site/DEV?page=${page}`)

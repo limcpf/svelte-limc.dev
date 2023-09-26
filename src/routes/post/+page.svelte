@@ -3,7 +3,7 @@
     import Page from "$lib/domain/Page.js";
     import PostDto from "$lib/domain/Post/Post.dto.js";
 
-    const pageTitle = "글 목록 | 싱싱한코딩"
+    const pageTitle = "글 목록 | 싱싱한 코딩"
 
     async function loadPost(page: number) {
         const req = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/public/post/site/DEV?page=${page}`)

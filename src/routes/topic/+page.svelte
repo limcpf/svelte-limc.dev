@@ -1,7 +1,7 @@
 <script>
     import TopicList from "$lib/components/topic/list/TopicList.svelte";
 
-    const pageTitle = "주제 목록 | 싱싱한코딩";
+    const pageTitle = "주제 목록 | 싱싱한 코딩";
 </script>
 
 <svelte:head>

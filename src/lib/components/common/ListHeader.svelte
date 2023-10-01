@@ -2,10 +2,11 @@
     import type Page from "$lib/domain/Page";
 
     export let title: string;
-    export let page: Page<T>;
+    export let page: Page<T> | undefined = undefined;
+    export let isAdmin: boolean = false;
 
-    let total;
-    let curPage;
+    let total: number;
+    let curPage: number;
     if(page) {
         total = page.totalPages;
         curPage = page.pageable.pageNumber + 1;
@@ -14,7 +15,11 @@
 
 <div class="post-list-header">
     <span class="header-title">{title}</span>
-    {#if page}<span class="page-info">총 {total}페이지 중 현재 {curPage}번째 페이지</span>{/if}
+    {#if page}
+        <span class="page-info">총 {total}페이지 중 현재 {curPage}번째 페이지</span>
+    {:else if isAdmin}
+        <slot />
+    {/if}
 </div>
 
 <style>

@@ -3,7 +3,7 @@ import BaseTimeDto from "$lib/domain/BaseTimeDto";
 export default class SeriesDetailDto extends BaseTimeDto{
     id: number
     site: string
-    topic: number
+    topic: string
     topicName: string
     title: string
     postCnt: number
@@ -11,7 +11,7 @@ export default class SeriesDetailDto extends BaseTimeDto{
     constructor(
         id: number,
         site: string,
-        topic: number,
+        topic: string,
         topicName: string,
         title: string,
         postCnt: number,

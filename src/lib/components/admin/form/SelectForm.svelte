@@ -17,7 +17,7 @@
                 데이터를 선택해주세요.
             </option>
             {#each options as t}
-                <option value={t.value}>{t.key}</option>
+                <option value={`${t.value}`}>{t.key}</option>
             {/each}
         {:else}
             <option selected value="">

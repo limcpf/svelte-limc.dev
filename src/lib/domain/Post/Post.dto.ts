@@ -10,7 +10,7 @@ export default class PostDto extends BaseTimeDto{
     topicName: string
     series?: number
     seriesName?: string
-    isPublished: Boolean
+    isPublished: boolean
     
     constructor(
          title: string,
@@ -19,7 +19,7 @@ export default class PostDto extends BaseTimeDto{
          site: string,
          topic: number,
          topicName: string,
-         isPublished: Boolean,
+         isPublished: boolean,
          id?: number,
          series?: number,
          seriesName?: string,

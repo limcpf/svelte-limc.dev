@@ -1,4 +1,4 @@
-import type {PageLoad} from "../../../../.svelte-kit/types/src/routes/post/[id]/$types";
+import type {PageLoad} from "../../../../../.svelte-kit/types/src/routes/post/[id]/$types";
 import type TopicDetailDto from "$lib/domain/Topic/TopicDetail.dto";
 
 // @ts-ignore

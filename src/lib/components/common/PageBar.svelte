@@ -1,5 +1,4 @@
 <script lang="ts">
-    // TODO: 변수명 정리하기, by 필요한가? >> curpageBy 필요없을수도
     import type Page from "$lib/domain/Page";
 
     export let tPage:Page<T>;

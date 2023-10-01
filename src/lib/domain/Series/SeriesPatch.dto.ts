@@ -3,13 +3,13 @@ import BaseTimeDto from "$lib/domain/BaseTimeDto";
 export default class SeriesPatchDto extends BaseTimeDto{
     id: number
     site: string
-    topic: number
+    topic: string
     title: string
 
     constructor(
         id: number,
         site: string,
-        topic: number,
+        topic: string,
         title: string,
         createdAt?:string,
         updatedAt?:string

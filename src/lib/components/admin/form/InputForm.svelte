@@ -3,17 +3,28 @@
     export let value: string;
     export let required: boolean = false;
     export let disabled: boolean = false;
+    export let type: string = "text"
 </script>
 
 <div class="add-form-input">
     <span>{title}</span>
-    <input
-            class="add-form-input-style"
-            type="text"
-            bind:value={value}
-            required={required}
-            disabled={disabled}
-    />
+    {#if type === "password"}
+        <input
+                class="add-form-input-style"
+                type="password"
+                bind:value={value}
+                required={required}
+                disabled={disabled}
+        />
+        {:else}
+        <input
+                class="add-form-input-style"
+                type="text"
+                bind:value={value}
+                required={required}
+                disabled={disabled}
+        />
+        {/if}
 </div>
 
 <style>

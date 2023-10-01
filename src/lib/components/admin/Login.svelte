@@ -1,4 +1,6 @@
 <script lang="ts">
+    import InputForm from "$lib/components/admin/form/InputForm.svelte";
+
     let id = "";
     let pw = "";
 
@@ -26,7 +28,19 @@
     }
 </script>
 
-<input type="text" id="id" bind:value={id} />
-<input type="password" id="pw" bind:value={pw} />
+<div class="login-wrapper">
+    <InputForm title="아이디" bind:value={id} />
+    <InputForm title="비밀번호" bind:value={pw} type="password"/>
+    <button on:click={() => {login()}}>로그인</button>
+</div>
 
-<button on:click={() => {login()}}>dd</button>
+
+<style>
+    .login-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

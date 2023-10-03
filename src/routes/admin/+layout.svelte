@@ -19,6 +19,11 @@
             text: "시리즈",
             href: "/admin/series",
             startWith: true
+        },
+        {
+            text: "이미지",
+            href: "/admin/image",
+            startWith: true
         }
     ]
 </script>

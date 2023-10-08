@@ -18,11 +18,11 @@
     const listStyle2 = `
        display:block;
        padding-left: 1em;
-       margin: 0.1em 0;
+       margin: 0.2em 0;
     `;
     renderer.heading = (text: string, level: number, raw: string) => {
         if(level === 2) return `<li><a style="${listStyle}" href="#${generatorHeaderId(text)}">${text}</a></li>`
-        return `<a style="${listStyle2}" href="#${generatorHeaderId(text)}">${text}</a>`
+        return `<a style="${listStyle2}" href="#${generatorHeaderId(text)}">- ${text}</a>`
     }
 
     marked.setOptions({

@@ -65,7 +65,7 @@
     }
 
     async function submit() {
-        let tableOfContents = generatorToc(content);
+        const tableOfContents = generatorToc(content);
 
         const postDto =
             new PostUpdateDto(title, summary, tableOfContents, content, site, topic, isPublished, id, series);

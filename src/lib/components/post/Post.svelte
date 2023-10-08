@@ -1,25 +1,23 @@
 <script lang="ts">
-    import type PostDto from "$lib/domain/Post/Post.dto";
-    import PostContent from "$lib/components/post/PostContent.svelte";
+    import PostContent from "$lib/components/post/PostContents.svelte";
     import PostReply from "$lib/components/post/PostReply.svelte";
 
     import TopicIcon from "$lib/components/icon/Topic.icon.svelte";
-    import SeriesIcon  from "$lib/components/icon/Series.icon.svelte";
-    import TimeIcon  from "$lib/components/icon/Time.icon.svelte";
+    import SeriesIcon from "$lib/components/icon/Series.icon.svelte";
+    import TimeIcon from "$lib/components/icon/Time.icon.svelte";
     import Properties from "$lib/components/common/properties/Properties.svelte";
     import {getFormatDate} from "$lib/util/time.util";
+    import type PostReadDto from "$lib/domain/Post/PostRead.dto";
 
-    export let data: PostDto;
+    export let data: PostReadDto;
 
     const {
         id,
-        title,
-        topic,
-        topicName,
-        series,
-        seriesName,
-        content,
-        summary,
+        siteDto,
+        topicDto,
+        seriesDto,
+        postTitle,
+        postContents,
         createdAt,
         updatedAt
     } = data
@@ -28,17 +26,17 @@
         {
             key: "주제",
             icon: TopicIcon,
-            href: `/topic/${topic}`,
-            value: topicName
+            href: `/topic/${topicDto.id}`,
+            value: topicDto.name
         }
     ];
-    if(series && seriesName) {
+    if(seriesDto) {
         properties.push(
             {
                 key: "시리즈",
                 icon: SeriesIcon,
-                href: `/series/${series}`,
-                value: seriesName
+                href: `/series/${seriesDto.id}`,
+                value: seriesDto.title
             }
         )
     }
@@ -63,9 +61,9 @@
 
 
 <div class="post-wrapper">
-    <h1>{title}</h1>
-    <Properties title="글 정보" properties={properties} />
-    <PostContent content={content} />
+    <h1>{postTitle.title}</h1>
+    <Properties properties={properties} title="글 정보" />
+    <PostContent postContents={postContents} />
     <PostReply id={id} />
 </div>
 

@@ -3,16 +3,18 @@
     import {getVisibleDateTime} from "$lib/util/time.util";
     import {marked} from "marked";
     import ListFooter from "$lib/components/common/ListBlockFooter.svelte";
+    import type PostListDto from "$lib/domain/Post/PostList.dto";
 
-    export let postDto: PostDto;
+    export let postListDto: PostListDto;
 
-    const { id, title, summary, topic, topicName, series, seriesName, createdAt, updatedAt } = postDto
+    const { id, siteDto, topicDto, seriesDto, postTitle, isPublished, createdAt, updatedAt } = postListDto
+
 
     const footer: ListFooterProp[] = [
-        {text: "주제 : " + topicName, href: `/topic/${topic}`}
+        {text: "주제 : " + topicDto.name, href: `/topic/${topicDto.id}`}
     ];
 
-    if(series && seriesName) footer.push({text: "시리즈 : " + seriesName, href: `/series/${series}`});
+    if(seriesDto) footer.push({text: "시리즈 : " + seriesDto.title, href: `/series/${seriesDto.id}`});
     if(createdAt && updatedAt) footer.push({text:getVisibleDateTime(createdAt, updatedAt)});
 
     const renderer = new marked.Renderer()
@@ -22,17 +24,17 @@
         renderer: renderer
     });
 
-    const markedSummary = marked.parse(summary);
-    const href = `/post/${id}`;
+    const markedSummary = marked.parse(postTitle.summary);
+    const href = `/post/${id ? id : postTitle.title.replaceAll(" ", "-")}`;
 </script>
 <div class="post-list-block">
     <a href={href} class="post-list-left">
-        <div>{ id }</div>
+        <div>{ id || "" }</div>
         <div></div>
     </a>
     <div class="post-list-right">
         <div class="post-list-title">
-            <h3><a href={href}>{title}</a></h3>
+            <h3><a href={href}>{postTitle.title}</a></h3>
         </div>
         <a href={href} class="post-list-summary">
             {@html markedSummary}

@@ -20,8 +20,12 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@types/cookie": "^0.5.2",
+		"cookie": "^0.5.0",
 		"github-markdown-css": "^5.2.0",
+		"markdown-toc": "^1.2.0",
 		"marked": "^9.0.3",
-		"prismjs": "^1.29.0"
+		"prismjs": "^1.29.0",
+		"tocbot": "^4.21.2"
 	}
 }

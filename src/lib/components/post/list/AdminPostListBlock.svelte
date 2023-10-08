@@ -1,32 +1,32 @@
 <script lang="ts">
-    import type PostDto from "$lib/domain/Post/Post.dto";
     import {getVisibleDateTime} from "$lib/util/time.util";
     import ListFooter from "$lib/components/common/ListBlockFooter.svelte";
     import AdminPostActionBlock from "$lib/components/post/list/AdminPostActionBlock.svelte";
+    import type PostReadDto from "$lib/domain/Post/PostRead.dto";
 
-    export let postDto: PostDto;
+    export let postReadDto: PostReadDto;
     let open = false;
     const toggle = () => open = !open;
-    const { id, title, summary, topic, topicName, series, seriesName, createdAt, updatedAt } = postDto
+    const { id, postTitle, postContents, siteDto, seriesDto, topicDto, createdAt, updatedAt } = postReadDto
 
-    let isPublished = postDto.isPublished
+    let isPublished = postReadDto.isPublished
 
     const footer: ListFooterProp[] = [
         {text: "발행상태 : " + (isPublished ? "발행" : "미발행")},
-        {text: "주제 : " + topicName, href: `/admin/topic/${topic}`}
+        {text: "주제 : " + topicDto.name, href: `/admin/topic/${topicDto.id}`}
     ];
 
-    if(series && seriesName) footer.push({text: "시리즈 : " + seriesName, href: `/admin/series/${series}`});
+    if(seriesDto) footer.push({text: "시리즈 : " + seriesDto.title, href: `/admin/series/${seriesDto.id}`});
     if(createdAt) footer.push({text: "created at " + getVisibleDateTime(createdAt, updatedAt)});
     if(updatedAt) footer.push({text: "updated at " + getVisibleDateTime(updatedAt, updatedAt)});
 </script>
 <div
-        class="post-list-block list-block"
         aria-current={open}
+        class="post-list-block list-block"
 >
     <div class="post-list-right" on:click={toggle}>
         <div class="post-list-title">
-            <h3>{title}</h3>
+            <h3>{postTitle.title}</h3>
         </div>
         <ListFooter footer={footer} />
     </div>

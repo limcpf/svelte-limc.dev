@@ -1,5 +1,6 @@
 <script lang="ts">
-    import PostContent from "$lib/components/post/PostContent.svelte";
+    import PostContent from "$lib/components/post/PostContents.svelte";
+
     export let content: string;
 </script>
 

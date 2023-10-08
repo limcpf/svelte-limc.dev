@@ -6,6 +6,10 @@
     import PostDto from "$lib/domain/Post/Post.dto";
     import PostListPreview from "$lib/components/post/list/PostListPreview.svelte";
     import PostPreview from "$lib/components/post/PostPreview.svelte";
+    import PostUpdateDto from "$lib/domain/Post/PostUpdate.dto";
+    import {generatorToc} from "$lib/util/markdown.util";
+    import type PostReadDto from "$lib/domain/Post/PostRead.dto";
+
     export let isUpdate: boolean = false;
     export let id: number = 0;
     export let formTitle: string;
@@ -17,6 +21,9 @@
     export let series = "";
     export let summary = "";
     export let content = "";
+
+    export let isPublished = false;
+
 
     let showListPreview = false;
     let showPreview = false;
@@ -58,8 +65,11 @@
     }
 
     async function submit() {
+        let tableOfContents = generatorToc(content);
+
         const postDto =
-            new PostDto(title, content, summary, site, topic, "", false, id, series);
+            new PostUpdateDto(title, summary, tableOfContents, content, site, topic, isPublished, id, series);
+
         try {
             const savePost = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/private/post`, {
                 method: isUpdate ? "PATCH" : "POST",
@@ -71,7 +81,7 @@
             });
 
             if(savePost.ok) {
-                const json = await savePost.json() as PostDto;
+                const json = await savePost.json() as PostReadDto;
 
                 if(confirm("게시글 작성이 완료되었습니다. 해당 게시글로 이동하시겠습니까?")) {
                     location.href = "/admin/post/" + json.id
@@ -93,10 +103,10 @@
 <div class="add-form">
     <h2>{formTitle}</h2>
     <div class="add-form-input-wrapper">
-        <SelectForm title="사이트" bind:value={site} options={sites} required />
-        <SelectForm title="주제" bind:value={topic} options={topics} required />
+        <SelectForm bind:value={site} options={sites} required title="사이트" />
+        <SelectForm bind:value={topic} options={topics} required title="주제" />
     </div>
-    <SelectForm title="시리즈" bind:value={series} options={seriesList} />
+    <SelectForm bind:value={series} options={seriesList} title="시리즈" />
 
     <button disabled={!(title && summary)} on:click={toggleListPreview}>제목 및 요약 미리보기</button>
     {#if showListPreview && previewPostDto}

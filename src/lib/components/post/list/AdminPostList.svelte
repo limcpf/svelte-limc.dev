@@ -6,8 +6,9 @@
     import NoContents from "$lib/components/common/NoContents.svelte";
     import AdminPostListBlock from "$lib/components/post/list/AdminPostListBlock.svelte";
     import MenuBtn from "$lib/components/menu/MenuBtn.svelte";
+    import type PostListDto from "$lib/domain/Post/PostList.dto";
 
-    export let loadFunction: (page: number) => Promise<Page<PostDto>>;
+    export let loadFunction: (page: number) => Promise<Page<PostListDto>>;
     let posts: Page<PostDto> | undefined;
     $: posts = posts
 
@@ -27,7 +28,7 @@
                 <MenuBtn menu={{text: "작 성", href: "/admin/post/add", startWith: false}}/>
             </PostListHeader>
             {#each posts.content as post}
-                <AdminPostListBlock postDto={post} />
+                <AdminPostListBlock postReadDto={post} />
             {/each}
             <PostPageBar tPage={posts} bind:page={page}/>
         </div>

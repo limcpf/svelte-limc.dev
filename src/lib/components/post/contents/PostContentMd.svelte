@@ -1,14 +1,16 @@
 <script lang="ts">
-    import {marked} from "marked";
     import prism from "prismjs";
+    import {marked} from "marked";
     import "prismjs/themes/prism-twilight.css";
-    import "prismjs/components/prism-shell-session";
     import "prismjs/components/prism-kotlin";
+    import "prismjs/components/prism-shell-session"
     import "prismjs/components/prism-java";
+    import {generatorHeaderId} from "$lib/util/markdown.util";
 
     export let content: string;
 
     const renderer = new marked.Renderer()
+
     renderer.image = (href, title, text) => {
         const extensionIdx = href.lastIndexOf(".");
         const pre = href.slice(0, extensionIdx);
@@ -36,22 +38,21 @@
         )}</code></pre>`;
     }
 
+    renderer.heading = (text: string, level: number, raw: string) => {
+        const header = [
+            `<h1><a href="#toc">${text}</a></h1>`,
+            `<h2 id=${generatorHeaderId(text)} href="#toc"><a href="#toc">${text}</a></h2>`,
+            `<h3 id=${generatorHeaderId(text)} href="#toc"><a href="#toc">${text}</a></h3>`,
+        ]
+        return header[level - 1] || `<h4 href="#toc"><a href="#toc">${text}</a></h4>`;
+    }
+
     marked.setOptions({
-        // highlight: (code, lang) => {
-        //     if (prism.languages[lang]) {
-        //         return prism.highlight(code, prism.languages[lang], lang);
-        //     } else {
-        //         return code;
-        //     }
-        // },
         renderer: renderer
     });
-
 </script>
 
-<article class="markdown-body">
-    {@html marked.parse(content)}
-</article>
+{@html marked.parse(content)}
 
 <style>
     code {

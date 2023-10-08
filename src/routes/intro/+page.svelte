@@ -7,7 +7,6 @@ const content = `## 소개\n안녕하세요. 싱싱한 코딩 블로그를 운�
     });
 
     const htmlContent = marked.parse(content);
-    console.log(htmlContent);
 </script>
 
 

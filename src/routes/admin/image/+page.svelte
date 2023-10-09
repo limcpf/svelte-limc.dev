@@ -82,7 +82,7 @@
                                     href={`https://files.limc.dev/file/limckr/${text}`}
                                     target="_blank"
                             >보기</a>
-                            <a on:click={() => { deleteImage(text) }}>삭제</a>
+                            <span on:click={() => { deleteImage(text) }}>삭제</span>
                         </div>
                     </div>
                 </div>

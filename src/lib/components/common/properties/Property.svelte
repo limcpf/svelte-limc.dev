@@ -14,7 +14,7 @@
             {#if href}
                 <a class="href-icon" href={href}>{value}</a>
             {:else}
-                <a>{value}</a>
+                <span>{value}</span>
             {/if}
         </div>
     </div>

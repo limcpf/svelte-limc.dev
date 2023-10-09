@@ -28,12 +28,12 @@
             <div on:click={() => {page = movePage(true)}}>이전</div>
         {/if}
         {#each pageNumArr as num, idx}
-                <a on:click={() => {page = num}}
+                <span on:click={() => {page = num}}
                    class="page-btn"
                    aria-current={pageable.pageNumber + 1 === num}
                 >
                     {num}
-                </a>
+                </span>
         {/each}
         {#if !isLast}
             <div on:click={() => {page = movePage(false)}}>다음</div>

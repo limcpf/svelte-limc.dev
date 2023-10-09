@@ -11,7 +11,7 @@
     <title>싱싱한 코딩</title>
 </svelte:head>
 
-<div class="recent-header"><a>최신 글</a><a href="/post">글 목록</a></div>
+<div class="recent-header"><span>최신 글</span><a href="/post">글 목록</a></div>
 <Post data={data} />
 
 <style>
@@ -24,11 +24,11 @@
         display: flex;
         justify-content: space-between;
     }
-    div.recent-header > a:first-child {
+    div.recent-header > span {
         font-size:1.3em;
         font-weight: bold;
     }
-    div.recent-header > a:nth-child(2) {
+    div.recent-header > a {
         text-decoration: underline;
     }
 </style>

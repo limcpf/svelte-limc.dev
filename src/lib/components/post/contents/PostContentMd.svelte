@@ -38,13 +38,18 @@
         )}</code></pre>`;
     }
 
-    renderer.heading = (text: string, level: number, raw: string) => {
+    renderer.heading = (text: string, level: number) => {
         const header = [
             `<h1><a href="#toc">${text}</a></h1>`,
             `<h2 id=${generatorHeaderId(text)} href="#toc"><a href="#toc">${text}</a></h2>`,
             `<h3 id=${generatorHeaderId(text)} href="#toc"><a href="#toc">${text}</a></h3>`,
         ]
         return header[level - 1] || `<h4 href="#toc"><a href="#toc">${text}</a></h4>`;
+    }
+
+    renderer.link = (href: string, title: string | null | undefined, text: string) => {
+        if(href.startsWith("#")) return `<a href=${href}>{text}</a>`;
+        return `<a href=${href}  class="external-link-icon" target="_blank">${text}</a>`
     }
 
     marked.setOptions({

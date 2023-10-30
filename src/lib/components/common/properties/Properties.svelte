@@ -10,7 +10,7 @@
 <div class="properties">
     <div class="properties-title">
         <span>{title}</span>
-        <div on:click={() => {showProperties = !showProperties}} class="properties-toggle-btn">
+        <div class="properties-toggle-btn" on:click={() => {showProperties = !showProperties}}>
             {showProperties ? "접기" : "펼치기"}
         </div>
     </div>
@@ -33,7 +33,7 @@
     .properties-title {
         display: flex;
         justify-content: space-between;
-        padding: 0.5em 5px;
+        padding: 0.1em 5px;
         margin-bottom: 0.3em;
         border-bottom: 1px solid lightgray;
     }
@@ -43,6 +43,9 @@
     @media (min-width: 640px) {
         .properties {
             max-width: 1024px;
+        }
+        .properties-title {
+            padding: 0.5em 5px;
         }
         .properties-toggle-btn {
             font-size: 0.9em;

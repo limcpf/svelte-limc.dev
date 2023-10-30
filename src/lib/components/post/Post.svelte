@@ -61,7 +61,7 @@
 
 
 <div class="post-wrapper">
-    <h1>{postTitle.title}</h1>
+    <div class="post-title"><h1>{postTitle.title}</h1></div>
     <Properties properties={properties} title="글 정보" />
     <PostContent postContents={postContents} />
     <PostReply id={id} />
@@ -77,13 +77,16 @@
         max-width: 1400px;
     }
 
-    .post-wrapper > h1 {
-        font-size: 1.5rem;
+    .post-title{
+        max-width: 1000px;
     }
 
+    .post-title > h1 {
+        font-size: 1.5rem;
+    }
     @media (min-width: 640px) {
-        .post-wrapper > h1 {
-            font-size: 3rem;
+        .post-title > h1{
+            font-size: 2.5rem;
         }
     }
 </style>

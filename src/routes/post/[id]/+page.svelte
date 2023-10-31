@@ -1,15 +1,15 @@
 <script lang="ts">
     import Post from "$lib/components/post/Post.svelte";
-    import type PostListDto from "$lib/domain/Post/PostList.dto";
+    import type PostReadDto from "$lib/domain/Post/PostRead.dto";
 
     /** @type {import('./$types').PageData} */
-    export let data: PostListDto;
+    export let data: PostReadDto;
 </script>
 
 <svelte:head>
     <title>{`${data.postTitle.title} | 싱싱한 코딩`}</title>
-    <meta property="og:url" content={"https://limc.dev/post/" + data.postTitle.title.replaceAll(" ", "-")}>
-    <meta property="og:title" content={data.postTitle.title}>
-    <meta property="og:description" content={data.postTitle.summary.slice(0, 150)}>
+    <meta content={"https://limc.dev/post/" + data.postTitle.title.replaceAll(" ", "-")} property="og:url">
+    <meta content={data.postTitle.title} property="og:title">
+    <meta content={data.postTitle.summary.slice(0, 150)} property="og:description">
 </svelte:head>
 <Post data={data}/>

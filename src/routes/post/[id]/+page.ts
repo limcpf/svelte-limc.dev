@@ -1,7 +1,7 @@
 import type PostReadDto from "$lib/domain/Post/PostRead.dto";
 
 // @ts-ignore
-/** @type {import('./$types').PageServerLoad} */
+/** @type {import('./$types').PageLoad} */
 // @ts-ignore
 export const load:PageLoad = async ({ params }) => {
     if(params?.id) {

@@ -3,5 +3,5 @@ import type {PageLoad} from "../../../../../../.svelte-kit/types/src/routes/post
 // @ts-ignore
 /** @type {import('./$types').PageLoad} */
 export const load:PageLoad = async ({ params }) => {
-    return {id : params.id}
+    return {id : params.id }
 }

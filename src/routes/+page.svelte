@@ -1,9 +1,9 @@
 <script lang="ts">
     import Post from "$lib/components/post/Post.svelte";
-    import type PostDto from "$lib/domain/Post/Post.dto";
+    import type PostReadDto from "$lib/domain/Post/PostRead.dto";
 
     /** @type {import('./$types').PageData} */
-    export let data: PostDto;
+    export let data: PostReadDto;
 
 </script>
 

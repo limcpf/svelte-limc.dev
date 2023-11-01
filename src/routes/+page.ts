@@ -1,4 +1,4 @@
-import type PostDto from "$lib/domain/Post/Post.dto";
+export const ssr = false;
 import type PostReadDto from "$lib/domain/Post/PostRead.dto";
 
 /** @type {import('./$types').PageLoad} */

@@ -1,5 +1,5 @@
 import type PostReadDto from "$lib/domain/Post/PostRead.dto";
-
+export const csr = true;
 // @ts-ignore
 /** @type {import('./$types').PageLoad} */
 // @ts-ignore

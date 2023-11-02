@@ -14,6 +14,11 @@
 </url>
 
 <url>
+  <loc>https://limc.dev/post/2023년-10월-개발-회고록</loc>
+  <lastmod>2023-11-02T14:56:27+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
   <loc>https://limc.dev/post/CloudFlare-Workers와-Backblaze-B2를-이용하여-무료-개인-이미지-저장소-만들기</loc>
   <lastmod>2023-10-30T12:38:37+00:00</lastmod>
   <priority>1.00</priority>

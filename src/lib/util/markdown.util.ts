@@ -1,3 +1,6 @@
+import {marked} from "marked";
+import prism from "prismjs";
+
 export interface toc {
     main: string,
     sub: string[]
@@ -10,28 +13,65 @@ export const generatorToc = (content: string) => {
     return headers.join("\n");
 }
 
-// const getTocFromHeaders = (headers: string[]) => {
-//     const tocList: toc[] = [];
-//
-//     const toc: toc= {
-//         main: "",
-//         sub: []
-//     }
-//
-//     for(const h of headers) {
-//         if(h.startsWith("## ")) {
-//             if(toc.main) {
-//                 tocList.push({...toc});
-//                 toc.main = "";
-//                 toc.sub = [];
-//             }
-//
-//             toc.main = h;
-//         } else if(h.startsWith("### ")) {
-//             if(!toc.main) tocList.push({main: h, sub: []});
-//             else toc.sub.push(h)
-//         }
-//     }
-//
-//     return tocList;
-// }
+export function generateContent(content: string) {
+    const renderer = new marked.Renderer()
+
+
+    renderer.image = (href, title, text) => {
+        const extensionIdx = href.lastIndexOf(".");
+        const pre = href.slice(0, extensionIdx);
+        const suf = href.slice(extensionIdx, href.length)
+        const lg = `${pre + "-lg" + suf}`;
+        const md = `${pre + "-md" + suf}`;
+        const sm = `${pre + "-sm" + suf}`;
+
+        return `<img
+                    srcset="${sm} 400w, ${md} 800w, ${lg} 1200w"
+                    sizes="(max-width: 400px) 400px,
+                            (max-width: 800px) 800px,
+                            1222px"
+                    src=${pre + "-lg" + suf + " 1200w"}
+                    alt=${text}
+                    loading="lazy"
+               />`
+    }
+
+    renderer.code = (code, infostring) => {
+        let info = infostring ? infostring : "";
+        if(info === "shell") info = "shell-session"
+        return `<pre class = "language-${infostring}"><code class = "language-${infostring}">${prism.highlight(
+            code,
+            prism.languages[info],
+            info
+        )}</code></pre>`;
+    }
+
+    renderer.heading = (text: string, level: number) => {
+        const header = [
+            `<h1><a href="#toc">${text}</a></h1>`,
+            `<h2 id=${generatorHeaderId(text)} href="#toc"><a href="#toc">${text}</a></h2>`,
+            `<h3 id=${generatorHeaderId(text)} href="#toc"><a href="#toc">${text}</a></h3>`,
+        ]
+        return header[level - 1] || `<h4 href="#toc"><a href="#toc">${text}</a></h4>`;
+    }
+
+    renderer.link = (href: string, title: string | null | undefined, text: string) => {
+        if(href.startsWith("#")) return `<a href=${href}>{text}</a>`;
+        return `<a href=${href}  class="external-link-icon" target="_blank">${text}</a>`
+    }
+
+    marked.setOptions({
+        renderer: renderer
+    });
+
+    let generatedContent: string;
+
+    try {
+        generatedContent = marked(content);
+    } catch (e) {
+        console.log(e);
+        generatedContent = "<h2>문서를 불러오는데 실패했습니다.</h2>";
+    }
+
+    return generatedContent;
+}

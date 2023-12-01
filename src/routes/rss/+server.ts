@@ -8,8 +8,8 @@ const req = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/public/post`)
 const posts = await req.json() as PostRssDto[];
 
 const feed = new Feed({
-    title: "Example Feed",
-    description: "This is an example feed!",
+    title: "Limc Dev Blog",
+    description: "개발자 limc의 개발 블로그입니다",
     id: "https://limc.dev/",
     link: "https://limc.dev/",
     language: "kr", copyright: "ⓒ 2023",

@@ -18,6 +18,7 @@ export function generateContent(content: string) {
 
 
     renderer.image = (href, title, text) => {
+        if(href.indexOf(".webm") !== -1) return `<video controls loop autoplay muted><source src=${href} type="video/webm"></video>`
         const extensionIdx = href.lastIndexOf(".");
         const pre = href.slice(0, extensionIdx);
         const suf = href.slice(extensionIdx, href.length)

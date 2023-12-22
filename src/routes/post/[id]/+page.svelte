@@ -13,4 +13,5 @@
     <meta content={data.postTitle.summary.slice(0, 150)} property="og:description">
     <meta content={data.postTitle.summary.slice(0, 150)} property="description">
 </svelte:head>
+
 <Post data={data}/>

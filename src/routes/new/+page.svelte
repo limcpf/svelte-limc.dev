@@ -1,6 +1,6 @@
 <script lang="ts">
     import type PostReadDto from "$lib/domain/Post/PostRead.dto";
-    import NewPostContents from "$lib/components/new/post/NewPostContents.svelte";
+    import Post from "$lib/components/post/Post.svelte";
 
     /** @type {import('./$types').PageData} */
     export let data: { props : {
@@ -15,7 +15,7 @@
 </svelte:head>
 
 <div class="recent-header"><span>최신 글</span><a href="/post">글 목록</a></div>
-<NewPostContents postContents="{postReadDto.postContents}"></NewPostContents>
+<Post data={postReadDto} />
 
 <style>
     div.recent-header {

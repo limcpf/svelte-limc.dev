@@ -1,5 +1,5 @@
 import {marked} from "marked";
-import prism from "prismjs";
+import Prism from "prismjs";
 
 export interface toc {
     main: string,
@@ -40,9 +40,9 @@ export function generateContent(content: string) {
     renderer.code = (code, infostring) => {
         let info = infostring ? infostring : "";
         if(info === "shell") info = "shell-session"
-        return `<pre class = "language-${infostring}"><code class = "language-${infostring}">${prism.highlight(
+        return `<pre class = "language-${infostring}"><code class = "language-${infostring}">${Prism.highlight(
             code,
-            prism.languages[info],
+            Prism.languages[info],
             info
         )}</code></pre>`;
     }

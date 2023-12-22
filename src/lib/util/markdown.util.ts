@@ -1,6 +1,13 @@
 import {marked} from "marked";
 import Prism from "prismjs";
 
+import "prismjs/themes/prism-twilight.css";
+import "prismjs/components/prism-kotlin";
+import "prismjs/components/prism-shell-session"
+import "prismjs/components/prism-java";
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-typescript";
+
 export interface toc {
     main: string,
     sub: string[]

@@ -1,5 +1,8 @@
 import {marked} from "marked";
 import Prism from "prismjs";
+const loadLanguages = require('prismjs/components/');
+loadLanguages(['kotlin']);
+loadLanguages(['java']);
 
 export interface toc {
     main: string,

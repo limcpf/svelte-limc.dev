@@ -3,6 +3,7 @@
     import {generateContent} from "$lib/util/markdown.util";
     import {onMount} from "svelte";
 
+    import "highlight.js/styles/a11y-dark.min.css";
 
     export let content: string;
 
@@ -24,9 +25,6 @@
     })
 </script>
 
-<svelte:head>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/default-dark.min.css" rel="stylesheet">
-</svelte:head>
 {@html genContent}
 
 <style>

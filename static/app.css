@@ -124,7 +124,7 @@ pre code.hljs {
     content: counter(line-idx);
     width: 24px;
     display: inline-block;
-    text-align: center;
+    text-align: right;
     margin-right: 16px;
     font-size: 0.8rem;
     color: #747A7A;

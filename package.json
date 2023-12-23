@@ -25,7 +25,8 @@
 	"dependencies": {
 		"feed": "^4.2.2",
 		"github-markdown-css": "^5.2.0",
+		"highlight.js": "^11.9.0",
 		"marked": "^9.0.3",
-		"prismjs": "^1.24.0"
+		"marked-highlight": "^2.1.0"
 	}
 }

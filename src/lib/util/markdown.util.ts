@@ -1,11 +1,6 @@
-import {marked} from "marked";
-import Prism from "prismjs";
-
-import "prismjs/components/prism-kotlin.js";
-import "prismjs/components/prism-java.js";
-import "prismjs/components/prism-javascript.js";
-import "prismjs/components/prism-typescript.js";
-import "prismjs/components/prism-shell-session.js";
+import {Marked} from "marked";
+import {markedHighlight} from "marked-highlight";
+import hljs from "highlight.js";
 
 export interface toc {
     main: string,
@@ -20,8 +15,18 @@ export const generatorToc = (content: string) => {
 }
 
 export function generateContent(content: string) {
-    const renderer = new marked.Renderer()
+    const marked = new Marked(
+        markedHighlight({
+            async: false,
+            langPrefix: 'hljs language-',
+            highlight(code, lang) {
+                const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+                return hljs.highlight(code, { language }).value;
+            }
+        })
+    )
 
+    const renderer = new marked.Renderer()
 
     renderer.image = (href, title, text) => {
         if(href.indexOf(".webm") !== -1) return `<video controls loop autoplay muted><source src=${href} type="video/webm"></video>`
@@ -43,15 +48,10 @@ export function generateContent(content: string) {
                />`
     }
 
-    renderer.code = (code, infostring) => {
-        let info = infostring ? infostring : "";
-        if(info === "shell") info = "shell-session"
-        return `<pre class = "language-${infostring}"><code class = "language-${infostring}">${Prism.highlight(
-            code,
-            Prism.languages[info],
-            info
-        )}</code></pre>`;
-    }
+    // renderer.code = (code, infostring) => {
+    //     console.log()
+    //     return `<pre><code class = "language-${infostring} hljs">${code.split("\n").join("\n<div class='line'></div>")}</code></pre>`;
+    // }
 
     renderer.heading = (text: string, level: number) => {
         const header = [
@@ -74,7 +74,7 @@ export function generateContent(content: string) {
     let generatedContent: string;
 
     try {
-        generatedContent = marked(content);
+        generatedContent = marked.parse(content) as string;
     } catch (e) {
         console.log(e);
         generatedContent = "<h2>문서를 불러오는데 실패했습니다.</h2>";

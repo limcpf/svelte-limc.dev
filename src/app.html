@@ -122,6 +122,21 @@
 			div.list-block {cursor: pointer;}
 			div.list-block[aria-current="true"] {background-color: rgba(0,0,0,0.05);}
 			hr {width: 100%;}
+			.hljs > div.line {
+				counter-increment: line-idx;
+				line-height: 1.5;
+				display: inline;
+			}
+
+			.hljs > div.line::before {
+				content: counter(line-idx);
+				width: 24px;
+				text-align: right;
+				margin-right: 16px;
+				font-size: 0.8rem;
+				color: #747A7A;
+			}
+
 		</style>
 	</head>
 	<body data-sveltekit-preload-data="hover">

@@ -4,7 +4,8 @@
 
     export let tableOfContents: string;
 
-    let show = false;
+    let show = true;
+
     const renderer = new marked.Renderer()
 
     const listStyle = `
@@ -20,7 +21,7 @@
        padding-left: 1em;
        margin: 0.2em 0;
     `;
-    renderer.heading = (text: string, level: number, raw: string) => {
+    renderer.heading = (text: string, level: number) => {
         if(level === 2) return `<li><a style="${listStyle}" href="#${generatorHeaderId(text)}">${text}</a></li>`
         return `<a style="${listStyle2}" href="#${generatorHeaderId(text)}">- ${text}</a>`
     }

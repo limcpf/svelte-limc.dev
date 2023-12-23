@@ -1,11 +1,13 @@
-export const ssr = false;
+import type {PageLoad} from "../../../../.svelte-kit/types/src/routes/$types";
+
 import type PostReadDto from "$lib/domain/Post/PostRead.dto";
-// @ts-ignore
+
 /** @type {import('./$types').PageLoad} */
-// @ts-ignore
-export const load:PageLoad = async ({ params }) => {
-    if(params?.id) {
-        const req = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/public/post/${encodeURI(params.id)}`)
+export const load:PageLoad = async ({  params }) => {
+    const { id } = params as { id: string };
+
+    if(id) {
+        const req = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/public/post/${encodeURI(id)}`)
         const json = await req.json()
         return json as PostReadDto
     } else {

@@ -1,8 +1,11 @@
 import {marked} from "marked";
 import Prism from "prismjs";
-const loadLanguages = require('prismjs/components/');
-loadLanguages(['kotlin']);
-loadLanguages(['java']);
+
+import "prismjs/components/prism-kotlin.js";
+import "prismjs/components/prism-java.js";
+import "prismjs/components/prism-javascript.js";
+import "prismjs/components/prism-typescript.js";
+import "prismjs/components/prism-shell-session.js";
 
 export interface toc {
     main: string,
@@ -18,7 +21,6 @@ export const generatorToc = (content: string) => {
 
 export function generateContent(content: string) {
     const renderer = new marked.Renderer()
-
 
     renderer.image = (href, title, text) => {
         if(href.indexOf(".webm") !== -1) return `<video controls loop autoplay muted><source src=${href} type="video/webm"></video>`

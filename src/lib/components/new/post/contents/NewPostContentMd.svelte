@@ -1,4 +1,5 @@
 <script lang="ts">
+    export const ssr = false;
     import "prismjs/themes/prism-twilight.css";
 
     import {generateContent} from "$lib/util/markdown.util";

@@ -48,10 +48,21 @@ export function generateContent(content: string) {
                />`
     }
 
-    // renderer.code = (code, infostring) => {
-    //     console.log()
-    //     return `<pre><code class = "language-${infostring} hljs">${code.split("\n").join("\n<div class='line'></div>")}</code></pre>`;
-    // }
+    renderer.code = (code, infostring) => {
+        const header = `
+                <div class="code-header">
+                    <div class="code-btns">
+                        <div class="red btn"></div>
+                        <div class="yellow btn"></div>
+                        <div class="green btn"></div>
+                    </div>
+                    <div class="code-info">${infostring}</div> 
+                </div>
+        `;
+
+        return `${header}<pre class="code-pre"><code class = "language-${infostring} hljs">${code}</code></pre>`;
+
+    }
 
     renderer.heading = (text: string, level: number) => {
         const header = [

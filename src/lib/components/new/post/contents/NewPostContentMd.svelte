@@ -10,13 +10,14 @@
 
     onMount(() => {
         hljs.highlightAll();
+        hljs.configure({ignoreUnescapedHTML: true})
 
         const codes = document.getElementsByClassName('hljs');
 
         for(const code of codes) {
             code.innerHTML = code.innerHTML
                 .split("\n")
-                .map((line) => "<div class='line'></div>" + line + "\n")
+                .map((line) => { if(line) return "<div class='line'>" + line + "</div>\n"})
                 .join("");
         }
 
